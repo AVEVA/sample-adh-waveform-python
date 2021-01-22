@@ -459,6 +459,6 @@ _Note: Types and Stream Views cannot be deleted until any streams referencing th
 
 Automated test uses Python 3.6.8 x64
 
-For the general steps or switch languages see the Task [ReadMe](../../../)  
-For the main OCS page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
-For the main samples page on master [ReadMe](https://github.com/osisoft/OSI-Samples)
+For the main OCS waveform samples page on master [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/master/docs/SDS_WAVEFORM_README.md)  
+For the main OCS samples page on master [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
+For the main OSIsoft samples page on master [ReadMe](https://github.com/osisoft/OSI-Samples)
