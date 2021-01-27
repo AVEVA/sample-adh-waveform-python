@@ -1,6 +1,6 @@
 ﻿# Sequential Data Store Python Sample
 
-**Version:** 1.0.17
+**Version:** 1.0.18
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/osisoft.sample-ocs-waveform-python?repoName=osisoft%2Fsample-ocs-waveform-python&branchName=master)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2631&repoName=osisoft%2Fsample-ocs-waveform-python&branchName=master)
 
