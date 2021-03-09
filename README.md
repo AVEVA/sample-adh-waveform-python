@@ -2,7 +2,7 @@
 
 **Version:** 1.0.18
 
-[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/osisoft.sample-ocs-waveform-python?repoName=osisoft%2Fsample-ocs-waveform-python&branchName=master)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2631&repoName=osisoft%2Fsample-ocs-waveform-python&branchName=master)
+[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/osisoft.sample-ocs-waveform-python?repoName=osisoft%2Fsample-ocs-waveform-python&branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2631&repoName=osisoft%2Fsample-ocs-waveform-python&branchName=main)
 
 ## Building a Python client to make REST API calls to the SDS Service
 
@@ -459,6 +459,6 @@ _Note: Types and Stream Views cannot be deleted until any streams referencing th
 
 Automated test uses Python 3.6.8 x64
 
-For the main OCS waveform samples page on master [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/master/docs/SDS_WAVEFORM_README.md)  
-For the main OCS samples page on master [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
-For the main OSIsoft samples page on master [ReadMe](https://github.com/osisoft/OSI-Samples)
+For the main OCS waveform samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/SDS_WAVEFORM_README.md)  
+For the main OCS samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
+For the main OSIsoft samples page [ReadMe](https://github.com/osisoft/OSI-Samples)
