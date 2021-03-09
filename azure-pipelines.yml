@@ -54,7 +54,7 @@ jobs:
           fileOriginal: $(CredFile)
           fileLibrary: $(CredFileLibraryOCS)
 
-      - script: python --version
+      - script: python3 --version
 
       - task: UsePythonVersion@0
         inputs:
@@ -64,11 +64,11 @@ jobs:
 
       - script: |
           echo Install test tools   
-          pip install pytest
+          pip3 install pytest
           echo Install requirements
-          pip install -r requirements.txt
+          pip3 install -r requirements.txt
           echo Run tests
-          python -m pytest --junitxml=junit/test-results.xml ./test.py
+          python3 -m pytest --junitxml=junit/test-results.xml ./test.py
           echo Complete
         displayName: 'Run tests'
 
