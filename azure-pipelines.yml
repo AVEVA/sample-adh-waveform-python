@@ -56,11 +56,11 @@ jobs:
 
       - script: python3 --version
 
-      # - task: UsePythonVersion@0
-      #   inputs:
-      #     versionSpec: '3.6'
-      #     architecture: 'x64'
-      #   displayName: 'Specify Python version'
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: '3.8'
+          architecture: 'x64'
+        displayName: 'Specify Python version'
 
       - script: |
           echo Install test tools   
