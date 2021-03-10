@@ -54,21 +54,21 @@ jobs:
           fileOriginal: $(CredFile)
           fileLibrary: $(CredFileLibraryOCS)
 
-      - script: python3 --version
+      - script: python --version
 
-      - task: UsePythonVersion@0
-        inputs:
-          versionSpec: '3.8'
-          architecture: 'x64'
-        displayName: 'Specify Python version'
+      # - task: UsePythonVersion@0
+      #   inputs:
+      #     versionSpec: '3.8'
+      #     architecture: 'x64'
+      #   displayName: 'Specify Python version'
 
       - script: |
           echo Install test tools   
-          pip3 install pytest
+          pip install pytest
           echo Install requirements
-          pip3 install -r requirements.txt
+          pip install -r requirements.txt
           echo Run tests
-          python3 -m pytest --junitxml=junit/test-results.xml ./test.py
+          python -m pytest --junitxml=junit/test-results.xml ./test.py
           echo Complete
         displayName: 'Run tests'
 
