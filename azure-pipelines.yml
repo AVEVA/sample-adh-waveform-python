@@ -38,29 +38,13 @@ variables:
 jobs:
   - job: Tests_OCS
     pool:
-      name: OpsGuild
-      demands: LinuxAgentEvaluation -equals true
-    # strategy:
-    #   matrix:
-    #     linux:
-    #       imageName: ubuntu-latest
-    #     windows:
-    #       imageName: windows-latest
-    # pool:
-    #   vmImage: $(imageName)
+      name: 00-OSIManaged-Containers
+      demands: Agent.OS -equals Linux
     steps:
       - template: '/miscellaneous/build_templates/config.yml@templates'
         parameters:
           fileOriginal: $(CredFile)
           fileLibrary: $(CredFileLibraryOCS)
-
-      - script: python --version
-
-      # - task: UsePythonVersion@0
-      #   inputs:
-      #     versionSpec: '3.8'
-      #     architecture: 'x64'
-      #   displayName: 'Specify Python version'
 
       - script: |
           echo Install test tools   
@@ -80,36 +64,39 @@ jobs:
         displayName: 'Publish test results'
         condition: always()
 
-  # - job: Tests_EDS
-  #   pool:
-  #     name: 00-OSIManaged-Test
-  #     demands: COMPUTERNAME -equals $(buildAgent)
-  #   steps:
-  #     - template: '/miscellaneous/build_templates/config.yml@templates'
-  #       parameters:
-  #         fileOriginal: $(CredFile)
-  #         fileLibrary: $(CredFileLibraryEDS)
-  #         filePath: $(projPath)
+  - job: Tests_EDS
+    pool:
+      name: 00-OSIManaged-Test
+      demands: COMPUTERNAME -equals $(buildAgent)
+    steps:
+      - template: '/miscellaneous/build_templates/config.yml@templates'
+        parameters:
+          fileOriginal: $(CredFile)
+          fileLibrary: $(CredFileLibraryEDS)
 
-  #     - bash: |
-  #         echo Install test tools
-  #         pip install pytest
-  #         echo Install requirements
-  #         pip install -r requirements.txt
-  #         echo Run tests
-  #         python -m pytest --junitxml=junit/test-results.xml ./test.py
-  #         echo Complete
-  #       workingDirectory: $(Build.SourcesDirectory)$(projPath)/
-  #       displayName: 'Run tests'
+      - bash: |
+          echo Install test tools
+          pip install pytest
+          echo Install requirements
+          pip install -r requirements.txt
+          echo Run tests
+          python -m pytest --junitxml=junit/test-results.xml ./test.py
+          echo Complete
+        displayName: 'Run tests'
 
-  #     - task: PublishTestResults@2
-  #       inputs:
-  #         testResultsFiles: '**/test-*.xml'
-  #         failTaskOnFailedTests: true
-  #         testRunTitle: '$(Agent.JobName) on $(imageName)'
-  #       displayName: 'Publish test results'
-  #       condition: always()
+      - task: PublishTestResults@2
+        inputs:
+          testResultsFiles: '**/test-*.xml'
+          failTaskOnFailedTests: true
+          testRunTitle: '$(Agent.JobName) on $(imageName)'
+        displayName: 'Publish test results'
+        condition: always()
 
-  # - template: '/miscellaneous/build_templates/analysis.yml@templates'
-  #   parameters:
-  #     language: python
+  - job: Analysis
+    pool:
+      name: 00-OSIManaged-Containers
+      demands: Agent.OS -equals Windows_NT
+    steps:
+      - template: '/miscellaneous/build_templates/analysis.yml@templates'
+        parameters:
+          useRequirementsTxt: true
