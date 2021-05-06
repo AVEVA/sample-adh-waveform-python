@@ -52,9 +52,9 @@ jobs:
 
       - script: |
           echo Install test tools   
-          pip install pytest
+          python -m pip install pytest
           echo Install requirements
-          pip install -r requirements.txt
+          python -m pip install -r requirements.txt
           echo Run tests
           python -m pytest --junitxml=junit/test-results.xml ./test.py
           echo Complete
