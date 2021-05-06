@@ -13,5 +13,5 @@ class SDSPythonSampleTests(unittest.TestCase):
         main(True)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()
