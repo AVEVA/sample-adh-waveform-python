@@ -46,15 +46,11 @@ jobs:
           fileOriginal: $(CredFile)
           fileLibrary: $(CredFileLibraryOCS)
 
-      - script: sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.9 2
-        displayName: 'Alias Python 3.9'
-        condition: eq(variables['Agent.OS'], 'Linux')
-
       - script: |
           echo Install test tools   
-          python -m pip install pytest
+          pip install pytest
           echo Install requirements
-          python -m pip install -r requirements.txt
+          pip install -r requirements.txt
           echo Run tests
           python -m pytest --junitxml=junit/test-results.xml ./test.py
           echo Complete
