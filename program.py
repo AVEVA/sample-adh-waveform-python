@@ -389,8 +389,8 @@ def main(test=False):
             namespace_id, stream.Id, WaveData, '1', 0, 3, False,
             SdsBoundaryType.ExactOrCalculated)
 
-        print('Default (Continuous) requesting data starting at index location'
-              ' "1", where we have not entered data, Sds will interpolate a '
+        print('Default (Continuous) requesting data starting at index location '
+              '"1", where we have not entered data, Sds will interpolate a '
               'value for each property:')
 
         for wave in waves:
@@ -411,9 +411,9 @@ def main(test=False):
             namespace_id, stream.Id, WaveData, '1', 0, 3, False,
             SdsBoundaryType.ExactOrCalculated)
         print()
-        print('We can override this read behavior on a property by property'
-              'basis, here we override the Radians property instructing Sds'
-              ' not to interpolate.')
+        print('We can override this read behavior on a property by property '
+              'basis, here we override the Radians property instructing Sds '
+              'not to interpolate.')
         print('Sds will now return the default value for the data type:')
         for wave in waves:
             print(
@@ -476,9 +476,9 @@ def main(test=False):
             namespace_id, stream.Id, WaveDataTarget, '1', 0, 3, False,
             SdsBoundaryType.ExactOrCalculated, automatic_stream_view.Id)
         print()
-        print('Specifying a streamView with an SdsType of the same shape'
-              'returns values that are automatically mapped to the target'
-              ' SdsType\'s properties: ')
+        print('Specifying a streamView with an SdsType of the same shape '
+              'returns values that are automatically mapped to the target '
+              'SdsType\'s properties: ')
         for way in range_waves:
             print(f'SinTarget: {way.sin_target}, CosTarget: {way.cos_target}, '
                   f'TanTarget: {way.tan_target}')
@@ -487,8 +487,8 @@ def main(test=False):
             namespace_id, stream.Id, WaveDataInteger, '1', 0, 3, False,
             SdsBoundaryType.ExactOrCalculated, manual_stream_view.Id)
         print()
-        print('SdsStreamViews can also convert certain types of data, here we'
-              ' return integers where the original values were doubles:')
+        print('SdsStreamViews can also convert certain types of data, here we '
+              'return integers where the original values were doubles:')
         for way in range_waves:
             print(
                 f'SinInt: {way.sin_int}, CosInt: {way.cos_int}, TanInt: {way.tan_int}')
@@ -500,8 +500,8 @@ def main(test=False):
             print(f'{prop.SourceId} => {prop.TargetId}')
 
         print()
-        print('Here is our explicit mapping, note SdsStreamViewMap will return'
-              ' all properties of the Source Type, even those without a '
+        print('Here is our explicit mapping, note SdsStreamViewMap will return '
+              'all properties of the Source Type, even those without a '
               'corresponding Target property:')
         for prop in stream_view_map_2.Properties:
             if hasattr(prop, 'TargetId'):
@@ -583,7 +583,7 @@ def main(test=False):
             # Update Metadata (OCS ONLY)
             #######################################################################
             print()
-            print('Let\'s update the Metadata on our stream: ')
+            print('Let\'s update the Metadata on our stream:')
 
             patch = [
                 {'op': 'remove', 'path': '/Region'},
@@ -672,7 +672,7 @@ def main(test=False):
             secondary_length = str(len(secondary.Indexes))
 
         print(
-            f'Secondary indexes on streams original: {original_length}.'
+            f'Secondary indexes on streams original: {original_length}. '
             f'New one: {secondary_length}')
 
         # Step 19
