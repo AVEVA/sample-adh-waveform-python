@@ -1,5 +1,9 @@
 # Version History
 
+## 1.0.22 / 2021-05-18
+
+- Updated dependencies
+
 ## 1.0.21 / 2021-05-06
 
 - Updated sample to use ocs_sample_library_preview 0.2.2_preview
