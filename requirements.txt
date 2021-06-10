@@ -1,1 +1,1 @@
-ocs_sample_library_preview>=0.2.4rc0
+ocs_sample_library_preview>=0.2.7rc0
