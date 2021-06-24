@@ -2,6 +2,7 @@
 
 import configparser
 import inspect
+import jsonpatch
 import math
 import traceback
 
@@ -9,7 +10,7 @@ from ocs_sample_library_preview import (SdsType, SdsTypeCode, SdsTypeProperty,
                                         EDSClient, OCSClient, SdsStream, SdsBoundaryType,
                                         SdsStreamPropertyOverride,
                                         SdsStreamViewProperty, SdsStreamView,
-                                        SdsStreamIndex, SdsInterpolationMode)
+                                        SdsStreamIndex, SdsInterpolationMode, Role)
 
 from wave_data import (WaveData, WaveDataCompound, WaveDataInteger,
                        WaveDataTarget)
@@ -213,6 +214,7 @@ def main(test=False):
         # Step 1
         tenant_id = config.get('Access', 'Tenant')
         namespace_id = config.get('Configurations', 'Namespace')
+        community_id = config.get('Configurations', 'Community')
 
         if tenant_id == 'default':
             sds_client = EDSClient(
@@ -608,7 +610,54 @@ def main(test=False):
             print('Metadata key City: ', city)
             print()
 
-        # Step 17
+        #######################################################################
+        # Community steps
+        #######################################################################
+        if (community_id):
+            # Step 17
+            print()
+            print('Get tenant roles')
+            roles = sds_client.Roles.getRoles()
+            role: Role = None
+            for r in roles:
+                if r.RoleTypeId == sds_client.Roles.CommunityMember and r.CommunityId == community_id:
+                    role = r
+                    break
+            print('Community member Id:')
+            print(role.Id)
+
+            print()
+            print('Sharing stream to community')
+            patch = jsonpatch.JsonPatch(
+                [{
+                    'op': 'add', 'path': '/RoleTrusteeAccessControlEntries/-',
+                    'value': {
+                        'AccessRights': 1, 'AccessType': 0,
+                        'Trustee': {'ObjectId': role.Id, 'TenantId': None, 'Type': 'Role'}
+                    }
+                }])
+            sds_client.Streams.patchStreamAccessControl(
+                namespace_id, SAMPLE_STREAM_ID, patch)
+
+            # Step 18
+            print()
+            print('Searching the community')
+            community_streams = sds_client.Communities.getCommunityStreams(
+                community_id, SAMPLE_STREAM_ID)
+            print('Found matching streams:')
+            for s in community_streams:
+                print(s.Id)
+
+            # Step 19
+            print()
+            print('Getting stream data from the community stream')
+            community_stream = community_streams[0]
+            dommunity_data = sds_client.Streams.getLastValueUrl(
+                community_stream.Self, WaveData)
+            print('Retrieved last value:')
+            print(dommunity_data.toJson())
+
+        # Step 20
         #######################################################################
         # Delete events
         #######################################################################
@@ -628,7 +677,7 @@ def main(test=False):
             pass
         print('All values deleted successfully!')
 
-        # Step 18
+        # Step 21
         print('Adding a stream with a secondary index.')
         index = SdsStreamIndex('Radians')
         secondary = SdsStream(STREAM_ID_SECONDARY,
@@ -675,7 +724,7 @@ def main(test=False):
             f'Secondary indexes on streams original: {original_length}. '
             f'New one: {secondary_length}')
 
-        # Step 19
+        # Step 22
         # Adding Compound Index Type
         print('Creating an SdsType with a compound index')
         type_compound = get_wave_compound_data_type(COMPOUND_TYPE_ID)
@@ -686,7 +735,7 @@ def main(test=False):
         stream_compound = SdsStream(STREAM_ID_COMPOUND, type_compound.Id)
         sds_client.Streams.createOrUpdateStream(namespace_id, stream_compound)
 
-        # Step 20
+        # Step 23
         print('Inserting data')
         waves = []
         waves.append(next_wave(1, 10))
@@ -718,7 +767,7 @@ def main(test=False):
         exception = error
 
     finally:
-        # Step 21
+        # Step 24
 
         #######################################################################
         # SdsType, SdsStream, and SdsStreamView deletion

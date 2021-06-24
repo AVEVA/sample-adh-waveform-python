@@ -1,6 +1,6 @@
 ﻿# Sequential Data Store Python Sample
 
-**Version:** 1.0.23
+**Version:** 1.1.0
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/osisoft.sample-ocs-waveform-python?repoName=osisoft%2Fsample-ocs-waveform-python&branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2631&repoName=osisoft%2Fsample-ocs-waveform-python&branchName=main)
 
@@ -10,7 +10,7 @@ The sample code in this topic demonstrates how to invoke SDS REST APIs using Pyt
 
 The sections that follow provide a brief description of the process from beginning to end.
 
-Developed against Python 3.7.2.
+Developed against Python 3.9.1.
 
 ## To Run this Sample
 
@@ -82,6 +82,7 @@ The values to be replaced are in `config.ini`:
 ```ini
 [Configurations]
 Namespace = REPLACE_WITH_NAMESPACE_ID
+Community = DELETE_OR_REPLACE_WITH_COMMUNITY_ID
 
 [Access]
 Resource = https://dat-b.osisoft.com
@@ -457,7 +458,7 @@ _Note: Types and Stream Views cannot be deleted until any streams referencing th
 
 ---
 
-Automated test uses Python 3.6.8 x64
+Automated test uses Python 3.9.1 x64
 
 For the main OCS waveform samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/SDS_WAVEFORM_README.md)  
 For the main OCS samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
