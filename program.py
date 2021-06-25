@@ -614,7 +614,7 @@ def main(test=False):
         # Community steps
         #######################################################################
         if (community_id):
-            # Step 17
+            # Step 18
             print()
             print('Get tenant roles')
             roles = sds_client.Roles.getRoles()
@@ -639,7 +639,7 @@ def main(test=False):
             sds_client.Streams.patchStreamAccessControl(
                 namespace_id, SAMPLE_STREAM_ID, patch)
 
-            # Step 18
+            # Step 19
             print()
             print('Searching the community')
             community_streams = sds_client.Communities.getCommunityStreams(
@@ -648,7 +648,7 @@ def main(test=False):
             for s in community_streams:
                 print(s.Id)
 
-            # Step 19
+            # Step 20
             print()
             print('Getting stream data from the community stream')
             community_stream = community_streams[0]
@@ -657,7 +657,7 @@ def main(test=False):
             print('Retrieved last value:')
             print(community_data.toJson())
 
-        # Step 20
+        # Step 21
         #######################################################################
         # Delete events
         #######################################################################
@@ -677,7 +677,7 @@ def main(test=False):
             pass
         print('All values deleted successfully!')
 
-        # Step 21
+        # Step 22
         print('Adding a stream with a secondary index.')
         index = SdsStreamIndex('Radians')
         secondary = SdsStream(STREAM_ID_SECONDARY,
@@ -724,7 +724,7 @@ def main(test=False):
             f'Secondary indexes on streams original: {original_length}. '
             f'New one: {secondary_length}')
 
-        # Step 22
+        # Step 23
         # Adding Compound Index Type
         print('Creating an SdsType with a compound index')
         type_compound = get_wave_compound_data_type(COMPOUND_TYPE_ID)
@@ -735,7 +735,7 @@ def main(test=False):
         stream_compound = SdsStream(STREAM_ID_COMPOUND, type_compound.Id)
         sds_client.Streams.createOrUpdateStream(namespace_id, stream_compound)
 
-        # Step 23
+        # Step 24
         print('Inserting data')
         waves = []
         waves.append(next_wave(1, 10))
@@ -767,7 +767,7 @@ def main(test=False):
         exception = error
 
     finally:
-        # Step 24
+        # Step 25
 
         #######################################################################
         # SdsType, SdsStream, and SdsStreamView deletion
