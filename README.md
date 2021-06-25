@@ -82,7 +82,7 @@ The values to be replaced are in `config.ini`:
 ```ini
 [Configurations]
 Namespace = REPLACE_WITH_NAMESPACE_ID
-Community = DELETE_OR_REPLACE_WITH_COMMUNITY_ID
+Community =
 
 [Access]
 Resource = https://dat-b.osisoft.com
@@ -93,6 +93,12 @@ ApiVersion = v1
 ClientId = REPLACE_WITH_APPLICATION_IDENTIFIER
 ClientSecret = REPLACE_WITH_APPLICATION_SECRET
 ```
+
+### Community
+
+If you would like to see an example of basic interactions with an OCS community, enter an existing community id in the `Community` field of the configuration. Make sure to also grant the appropriate "Community Member" role to the Client-Credentials Client used by the sample. If you have not yet created a community, see the [documentation](https://docs.osisoft.com/bundle/ocs/page/communities/create-a-community.html) for instructions. Entering a community id will enable three additional steps in the sample.
+
+If you are not using OCS communities, leave the `Community` field blank.
 
 ## Obtain an Authentication Token
 
