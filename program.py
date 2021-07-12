@@ -620,7 +620,7 @@ def main(test=False):
             roles = sds_client.Roles.getRoles()
             role: Role = None
             for r in roles:
-                if r.RoleTypeId == sds_client.Roles.CommunityMember and r.CommunityId == community_id:
+                if r.RoleTypeId == sds_client.Roles.CommunityMemberRoleTypeId and r.CommunityId == community_id:
                     role = r
                     break
             print('Community member Id:')
