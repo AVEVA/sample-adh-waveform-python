@@ -1,6 +1,6 @@
 ﻿# Sequential Data Store Python Sample
 
-**Version:** 1.0.23
+**Version:** 1.1.0
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/osisoft.sample-ocs-waveform-python?repoName=osisoft%2Fsample-ocs-waveform-python&branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2631&repoName=osisoft%2Fsample-ocs-waveform-python&branchName=main)
 
@@ -10,7 +10,7 @@ The sample code in this topic demonstrates how to invoke SDS REST APIs using Pyt
 
 The sections that follow provide a brief description of the process from beginning to end.
 
-Developed against Python 3.7.2.
+Developed against Python 3.9.1.
 
 ## To Run this Sample
 
@@ -82,6 +82,7 @@ The values to be replaced are in `config.ini`:
 ```ini
 [Configurations]
 Namespace = REPLACE_WITH_NAMESPACE_ID
+Community =
 
 [Access]
 Resource = https://dat-b.osisoft.com
@@ -92,6 +93,12 @@ ApiVersion = v1
 ClientId = REPLACE_WITH_APPLICATION_IDENTIFIER
 ClientSecret = REPLACE_WITH_APPLICATION_SECRET
 ```
+
+### Community
+
+If you would like to see an example of basic interactions with an OCS community, enter an existing community id in the `Community` field of the configuration. Make sure to also grant the appropriate "Community Member" role to the Client-Credentials Client used by the sample. If you have not yet created a community, see the [documentation](https://docs.osisoft.com/bundle/ocs/page/communities/create-a-community.html) for instructions. Entering a community id will enable three additional steps in the sample.
+
+If you are not using OCS communities, leave the `Community` field blank.
 
 ## Obtain an Authentication Token
 
@@ -457,7 +464,7 @@ _Note: Types and Stream Views cannot be deleted until any streams referencing th
 
 ---
 
-Automated test uses Python 3.6.8 x64
+Automated test uses Python 3.9.1 x64
 
 For the main OCS waveform samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/SDS_WAVEFORM_README.md)  
 For the main OCS samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
