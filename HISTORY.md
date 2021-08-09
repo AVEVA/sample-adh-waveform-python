@@ -1,5 +1,10 @@
 # Version History
 
+## 1.1.1 / 2021-08-09
+
+- Updated dependencies
+- Added parameter name in getRangeValues call
+
 ## 1.1.0 / 2021-07-12
 
 - Added steps for community features
