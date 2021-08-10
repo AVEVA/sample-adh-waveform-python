@@ -4,6 +4,7 @@
 
 - Updated dependencies
 - Added parameter name in getRangeValues call
+- Cleaned up gitignore
 
 ## 1.1.0 / 2021-07-12
 
