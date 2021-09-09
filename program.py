@@ -453,15 +453,15 @@ def main(test=False):
                                            wave_integer_type.Id, 'SampleIntStreamView',
                                            properties=[vp1, vp2, vp3, vp4])
 
-        automatic_stream_view = sds_client.Streams.getOrCreateStreamView(
+        automatic_stream_view = sds_client.StreamViews.getOrCreateStreamView(
             namespace_id, stream_view)
-        manual_stream_view = sds_client.Streams.getOrCreateStreamView(
+        manual_stream_view = sds_client.StreamViews.getOrCreateStreamView(
             namespace_id, manual_stream_view)
 
-        stream_view_map_1 = sds_client.Streams.getStreamViewMap(
+        stream_view_map_1 = sds_client.StreamViews.getStreamViewMap(
             namespace_id, automatic_stream_view.Id)
 
-        stream_view_map_2 = sds_client.Streams.getStreamViewMap(
+        stream_view_map_2 = sds_client.StreamViews.getStreamViewMap(
             namespace_id, manual_stream_view.Id)
 
         range_waves = sds_client.Streams.getRangeValues(
