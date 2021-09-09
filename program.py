@@ -476,7 +476,7 @@ def main(test=False):
         # StreamView data when retrieved with a streamView
         range_waves = sds_client.Streams.getRangeValues(
             namespace_id, stream.Id, WaveDataTarget, '1', 0, 3, False,
-            SdsBoundaryType.ExactOrCalculated, automatic_stream_view.Id)
+            SdsBoundaryType.ExactOrCalculated, stream_view_id=automatic_stream_view.Id)
         print()
         print('Specifying a streamView with an SdsType of the same shape '
               'returns values that are automatically mapped to the target '
@@ -487,7 +487,7 @@ def main(test=False):
 
         range_waves = sds_client.Streams.getRangeValues(
             namespace_id, stream.Id, WaveDataInteger, '1', 0, 3, False,
-            SdsBoundaryType.ExactOrCalculated, manual_stream_view.Id)
+            SdsBoundaryType.ExactOrCalculated, stream_view_id=manual_stream_view.Id)
         print()
         print('SdsStreamViews can also convert certain types of data, here we '
               'return integers where the original values were doubles:')
