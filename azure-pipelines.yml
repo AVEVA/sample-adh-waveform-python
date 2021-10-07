@@ -66,6 +66,8 @@ jobs:
         value: default
       - name: NamespaceId
         value: default
+      - name: CommunityId
+        value: null
       - name: Resource
         value: https://localhost:5590
     steps:
