@@ -1,6 +1,7 @@
 """This sample script demonstrates how to invoke the Sequential Data Store REST API"""
 
 import inspect
+import json
 import jsonpatch
 import math
 import traceback
