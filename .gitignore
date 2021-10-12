@@ -133,4 +133,5 @@ dmypy.json
 
 # Credential Config Files
 config.ini
+appsettings.json
 product-readiness.*

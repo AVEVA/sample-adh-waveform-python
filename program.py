@@ -1,7 +1,7 @@
 """This sample script demonstrates how to invoke the Sequential Data Store REST API"""
 
-import configparser
 import inspect
+import json
 import jsonpatch
 import math
 import traceback
@@ -14,6 +14,24 @@ from ocs_sample_library_preview import (SdsType, SdsTypeCode, SdsTypeProperty,
 
 from wave_data import (WaveData, WaveDataCompound, WaveDataInteger,
                        WaveDataTarget)
+
+
+def get_appsettings():
+    """Open and parse the appsettings.json file"""
+
+    # Try to open the configuration file
+    try:
+        with open(
+            'appsettings.json',
+            'r',
+        ) as f:
+            appsettings = json.load(f)
+    except Exception as error:
+        print(f'Error: {str(error)}')
+        print(f'Could not open/read appsettings.json')
+        exit()
+
+    return appsettings
 
 
 def get_wave_data_type(sample_type_id):
@@ -208,27 +226,24 @@ def main(test=False):
     """This function is the main body of the SDS sample script"""
     exception = None
     try:
-        config = configparser.ConfigParser()
-        config.read('config.ini')
+        appsettings = get_appsettings()
 
         # Step 1
-        tenant_id = config.get('Access', 'Tenant')
-        namespace_id = config.get('Configurations', 'Namespace')
-        community_id = config.get('Configurations', 'Community')
+        tenant_id = appsettings.get('TenantId')
+        namespace_id = appsettings.get('NamespaceId')
+        community_id = appsettings.get('CommunityId')
 
         if tenant_id == 'default':
             sds_client = EDSClient(
-                config.get('Access', 'ApiVersion'),
-                config.get('Access', 'Resource'))
+                appsettings.get('ApiVersion'),
+                appsettings.get('Resource'))
         else:
             sds_client = OCSClient(
-                config.get('Access', 'ApiVersion'),
-                config.get('Access', 'Tenant'),
-                config.get('Access', 'Resource'),
-                config.get('Credentials', 'ClientId'),
-                config.get('Credentials', 'ClientSecret'))
-
-        namespace_id = config.get('Configurations', 'Namespace')
+                appsettings.get('ApiVersion'),
+                appsettings.get('TenantId'),
+                appsettings.get('Resource'),
+                appsettings.get('ClientId'),
+                appsettings.get('ClientSecret'))
 
         print(r'------------------------------------------')
         print(r'  _________    .___     __________        ')

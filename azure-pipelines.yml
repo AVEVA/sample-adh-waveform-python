@@ -26,12 +26,6 @@ resources:
 
 variables:
   - template: '/miscellaneous/build_templates/variables.yml@templates'
-  - name: CredFile
-    value: config.ini
-  - name: CredFileLibraryOCS
-    value: product-readiness.sds_python_ocs.ini
-  - name: CredFileLibraryEDS
-    value: product-readiness.sds_python_eds.ini
   - name: analysisProject
     value: SDS_Python
 
@@ -41,10 +35,9 @@ jobs:
       name: 00-OSIManaged-Containers
       demands: Agent.OS -equals Linux
     steps:
-      - template: '/miscellaneous/build_templates/config.yml@templates'
+      - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          fileOriginal: $(CredFile)
-          fileLibrary: $(CredFileLibraryOCS)
+          secrets: 'TenantId, NamespaceId, CommunityId, ClientId, ClientSecret'
 
       - script: |
           echo Install test tools   
@@ -68,11 +61,17 @@ jobs:
     pool:
       name: 00-OSIManaged-Test
       demands: COMPUTERNAME -equals $(buildAgent)
+    variables:
+      - name: TenantId
+        value: default
+      - name: NamespaceId
+        value: default
+      - name: CommunityId
+        value: null
+      - name: Resource
+        value: http://localhost:5590
     steps:
-      - template: '/miscellaneous/build_templates/config.yml@templates'
-        parameters:
-          fileOriginal: $(CredFile)
-          fileLibrary: $(CredFileLibraryEDS)
+      - template: '/miscellaneous/build_templates/appsettings.yml@templates'
 
       - bash: |
           echo Install test tools
