@@ -17,9 +17,6 @@ schedules:
         - main
     always: true
 
-resources:
-  repositories:
-
 trigger:
   batch: true
   branches:
