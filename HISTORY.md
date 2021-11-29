@@ -1,5 +1,9 @@
 # Version History
 
+## 1.1.5 / 2021-12-07
+
+- Update pipelines to reference internal analysis templates
+
 ## 1.1.4 / 2021-10-20
 
 - Updated dependencies
