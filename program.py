@@ -300,7 +300,7 @@ def main(test=False):
 
         # Get all the events
         waves = sds_client.Streams.getWindowValues(
-            namespace_id, stream.Id, WaveData, 0, 180)
+            namespace_id, stream.Id, 0, 180, WaveData)
         print('Getting all events')
         print(f'Total events found: {str(len(waves))}')
         for wave in waves:
@@ -331,7 +331,7 @@ def main(test=False):
 
         # Get all the events
         waves = sds_client.Streams.getWindowValues(namespace_id, stream.Id,
-                                                   WaveData, 0, 40)
+                                                   0, 40, WaveData)
         print('Getting updated events')
         print(f'Total events found: {str(len(waves))}')
         for wave in waves:
@@ -355,7 +355,7 @@ def main(test=False):
         # Step 9
         # Get all the events
         waves = sds_client.Streams.getWindowValues(namespace_id, stream.Id,
-                                                   WaveData, 0, 180)
+                                                   0, 180, WaveData)
         print('Getting replaced events')
         print(f'Total events found: {str(len(waves))}')
         for wave in waves:
@@ -373,7 +373,7 @@ def main(test=False):
         # Filtering from all values
         print('Getting filtered events')
         filtered_events = sds_client.Streams.getWindowValues(
-            namespace_id, SAMPLE_STREAM_ID, WaveData, 0, 50, 'Radians lt 3')
+            namespace_id, SAMPLE_STREAM_ID, 0, 50, WaveData, 'Radians lt 3')
 
         print(f'Total events found: {str(len(filtered_events))}')
         for wave in filtered_events:
@@ -767,7 +767,7 @@ def main(test=False):
         first_compound = sds_client.Streams.getFirstValue(
             namespace_id, STREAM_ID_COMPOUND, None)
         window_val = sds_client.Streams.getWindowValues(
-            namespace_id, STREAM_ID_COMPOUND, None, '2|1', '10|8')
+            namespace_id, STREAM_ID_COMPOUND, '2|1', '10|8')
 
         print(
             f'First data: {str(first_compound)} Latest data: {str(latest_compound)}')
