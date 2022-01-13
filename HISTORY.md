@@ -1,5 +1,10 @@
 # Version History
 
+## 1.1.6 / 2022-01-17
+
+- Updated dependencies
+- Reordered getWindowValues arguments to reflect changes to library
+
 ## 1.1.5 / 2021-12-07
 
 - Update pipelines to reference internal analysis templates
