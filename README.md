@@ -58,7 +58,7 @@ Included in the sample there is a configuration file with placeholders that need
 
 The SDS Service is secured using Azure Active Directory. The sample application is an example of a _confidential client_. Confidential clients provide an application ID and secret that are authenticated against the directory. These are referred to as client IDs and client secrets, which are associated with a given tenant. They are created through the tenant's administration portal. The steps necessary to create a new client ID and secret are described below.
 
-First, log on to the [Cloud Portal](https://datahub.connect.aveva.com) with admin credentials and navigate to the `Client Keys` page under the `Manage` tab, which is situated along the top of the webpage. Two types of keys may be created. For a complete explanation of key roles look at the help bar on the right side of the page. This sample program covers data creation, deletion and retrieval, so an administration key must be used in the configuration file. Creating a new key is simple. Enter a name for the key, select `Administrator role`, then click `Add Key`.
+First, log on to the [Data Hub Portal](https://datahub.connect.aveva.com) with admin credentials and navigate to the `Client Keys` page under the `Manage` tab, which is situated along the top of the webpage. Two types of keys may be created. For a complete explanation of key roles look at the help bar on the right side of the page. This sample program covers data creation, deletion and retrieval, so an administration key must be used in the configuration file. Creating a new key is simple. Enter a name for the key, select `Administrator role`, then click `Add Key`.
 
 Next, view the key by clicking the small eye icon on the right of the created key, located in the list of available keys. A pop-up will appear with the tenant ID, client ID and client secret. These must replace the corresponding values in the sample's configuration file.
 
@@ -115,7 +115,7 @@ This is handled by the python library
 
 ## Acquire an SdsNamespace
 
-In SDS, a namespace provides isolation within a Tenant. Each namespace has its own collection of Streams, Types, and Stream Views. It is not possible to programmatically create or delete a namespace. If you are a new user, be sure to go to the [Cloud Portal](https://datahub.connect.aveva.com) and create a namespace using your tenant login credentials provided by AVEVA. You must provide the namespace ID of a valid namespace in `appsettings.json` for the sample to function properly.
+In SDS, a namespace provides isolation within a Tenant. Each namespace has its own collection of Streams, Types, and Stream Views. It is not possible to programmatically create or delete a namespace. If you are a new user, be sure to go to the [Data Hub Portal](https://datahub.connect.aveva.com) and create a namespace using your tenant login credentials provided by AVEVA. You must provide the namespace ID of a valid namespace in `appsettings.json` for the sample to function properly.
 
 Each SdsClient is associated with the tenant passed as an argument to the constructor. There is a one-to-one correspondence between them. However, multiple namespaces may be allocated to a single tenant, so you will see that each function in the library takes in a namespace ID as an argument.
 
@@ -463,6 +463,6 @@ _Note: Types and Stream Views cannot be deleted until any streams referencing th
 
 Automated test uses Python 3.9.1 x64
 
-For the main AVEVA waveform samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/SDS_WAVEFORM.md)  
-For the main AVEVA samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS) 
+For the main ADH waveform samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/SDS_WAVEFORM.md)  
+For the main ADH samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS) 
 For the main AVEVA samples page [ReadMe](https://github.com/osisoft/OSI-Samples)
