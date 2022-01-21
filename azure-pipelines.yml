@@ -34,7 +34,7 @@ variables:
     value: SDS_Python
 
 jobs:
-  - job: Tests_OCS
+  - job: Tests_ADH
     pool:
       name: 00-OSIManaged-Containers
       demands: Agent.OS -equals Linux
