@@ -41,7 +41,7 @@ jobs:
     steps:
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          secrets: 'TenantId, NamespaceId, CommunityId, ClientId, ClientSecret'
+          secrets: 'TenantId, NamespaceId, CommunityId, ClientId, ClientSecret, Resource'
 
       - script: |
           echo Install test tools   

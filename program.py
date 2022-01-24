@@ -6,7 +6,7 @@ import jsonpatch
 import math
 import traceback
 
-from adh_sample_library_preview import (SdsType, SdsTypeCode, SdsTypeProperty,
+from ocs_sample_library_preview import (SdsType, SdsTypeCode, SdsTypeProperty,
                                         EDSClient, ADHClient, SdsStream, SdsBoundaryType,
                                         SdsStreamPropertyOverride,
                                         SdsStreamViewProperty, SdsStreamView,
