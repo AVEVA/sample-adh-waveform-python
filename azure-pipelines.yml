@@ -63,7 +63,7 @@ jobs:
 
   - job: Tests_EDS
     pool:
-      name: 00-OSIManaged-Containers
+      name: 00-OSIManaged-Test
       demands: sku2 -equals VSBuildTools.v16.11.7plusAndEDS
     variables:
       - name: TenantId
