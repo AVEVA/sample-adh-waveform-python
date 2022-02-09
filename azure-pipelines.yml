@@ -64,7 +64,7 @@ jobs:
   - job: Tests_EDS
     pool:
       name: 00-OSIManaged-Test
-      demands: COMPUTERNAME -equals $(buildAgent)
+      demands: sku2 -equals VSBuildTools.v16.11.7plusAndEDS
     variables:
       - name: TenantId
         value: default
