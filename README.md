@@ -1,8 +1,11 @@
 ﻿# Sequential Data Store Python Sample
 
-**Version:** 1.1.7
+| :loudspeaker: **Notice**: Samples have been updated to reflect that they work on AVEVA Data Hub.  The samples also work on OSIsoft Cloud Services unless otherwise noted. |
+| -----------------------------------------------------------------------------------------------|  
 
-[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/osisoft.sample-ocs-waveform-python?repoName=osisoft%2Fsample-ocs-waveform-python&branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2631&repoName=osisoft%2Fsample-ocs-waveform-python&branchName=main)
+**Version:** 1.2.0
+
+[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/ADH/aveva.sample-adh-waveform-python?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2631&branchName=main)
 
 ## Building a Python client to make REST API calls to the SDS Service
 
@@ -18,7 +21,7 @@ Developed against Python 3.9.1.
 1. Install required modules: `pip install -r requirements.txt`
 1. Open the folder with your favorite IDE
 1. Configure the sample using the file [appsettings.placeholder.json](appsettings.placeholder.json). Before editing, rename this file to `appsettings.json`. This repository's `.gitignore` rules should prevent the file from ever being checked in to any fork or branch, to ensure credentials are not compromised.
-1. Update `appsettings.json` with the credentials provided by OSIsoft
+1. Update `appsettings.json` with the credentials provided by AVEVA
 1. Run `program.py`
 
 To Test the sample:
@@ -39,7 +42,7 @@ response = requests.post(url, data=payload, headers=client_headers)
 ```
 
 - _url_ is the service endpoint (for example:
-  `https://dat-a.osisoft.com`). The connection is used by the `SdsClient` class.
+  `https://uswe.datahub.connect.aveva.com`). The connection is used by the `SdsClient` class.
 
 Each call to the SDS REST API consists of an HTTP request along with a specific URL and HTTP method. The URL consists of the server name plus the extension that is specific to the call. Like all REST APIs, the SDS REST API maps HTTP methods to CRUD operations as shown in the following table:
 
@@ -54,11 +57,11 @@ Each call to the SDS REST API consists of an HTTP request along with a specific 
 
 Included in the sample there is a configuration file with placeholders that need to be replaced with the proper values. They include information for authentication, connecting to the SDS Service, and pointing to a namespace.
 
-### OSIsoft Cloud Services
+### Aveva Data Hub
 
 The SDS Service is secured using Azure Active Directory. The sample application is an example of a _confidential client_. Confidential clients provide an application ID and secret that are authenticated against the directory. These are referred to as client IDs and client secrets, which are associated with a given tenant. They are created through the tenant's administration portal. The steps necessary to create a new client ID and secret are described below.
 
-First, log on to the [Cloud Portal](https://cloud.osisoft.com) with admin credentials and navigate to the `Client Keys` page under the `Manage` tab, which is situated along the top of the webpage. Two types of keys may be created. For a complete explanation of key roles look at the help bar on the right side of the page. This sample program covers data creation, deletion and retrieval, so an administration key must be used in the configuration file. Creating a new key is simple. Enter a name for the key, select `Administrator role`, then click `Add Key`.
+First, log on to the [Data Hub Portal](https://datahub.connect.aveva.com) with admin credentials and navigate to the `Client Keys` page under the `Manage` tab, which is situated along the top of the webpage. Two types of keys may be created. For a complete explanation of key roles look at the help bar on the right side of the page. This sample program covers data creation, deletion and retrieval, so an administration key must be used in the configuration file. Creating a new key is simple. Enter a name for the key, select `Administrator role`, then click `Add Key`.
 
 Next, view the key by clicking the small eye icon on the right of the created key, located in the list of available keys. A pop-up will appear with the tenant ID, client ID and client secret. These must replace the corresponding values in the sample's configuration file.
 
@@ -81,7 +84,7 @@ The values to be replaced are in `appsettings.json`:
 
 ```json
 {
-  "Resource": "https://dat-b.osisoft.com",
+  "Resource": "uswe.datahub.connect.aveva.com",
   "ApiVersion": "v1",
   "TenantId": "PLACEHOLDER_REPLACE_WITH_TENANT_ID",
   "NamespaceId": "PLACEHOLDER_REPLACE_WITH_NAMESPACE_ID",
@@ -93,9 +96,9 @@ The values to be replaced are in `appsettings.json`:
 
 ### Community
 
-If you would like to see an example of basic interactions with an OCS community, enter an existing community id in the `CommunityId` field of the configuration. Make sure to also grant the appropriate "Community Member" role to the Client-Credentials Client used by the sample. If you have not yet created a community, see the [documentation](https://docs.osisoft.com/bundle/ocs/page/communities/create-a-community.html) for instructions. Entering a community id will enable three additional steps in the sample.
+If you would like to see an example of basic interactions with an ADH community, enter an existing community id in the `CommunityId` field of the configuration. Make sure to also grant the appropriate "Community Member" role to the Client-Credentials Client used by the sample. If you have not yet created a community, see the [documentation](https://docs.osisoft.com/bundle/ocs/page/communities/create-a-community.html) for instructions. Entering a community id will enable three additional steps in the sample.
 
-If you are not using OCS communities, leave the `CommunityId` field blank.
+If you are not using ADH communities, leave the `CommunityId` field blank.
 
 ## Obtain an Authentication Token
 
@@ -115,7 +118,7 @@ This is handled by the python library
 
 ## Acquire an SdsNamespace
 
-In SDS, a namespace provides isolation within a Tenant. Each namespace has its own collection of Streams, Types, and Stream Views. It is not possible to programmatically create or delete a namespace. If you are a new user, be sure to go to the [Cloud Portal](http://cloud.osisoft.com) and create a namespace using your tenant login credentials provided by OSIsoft. You must provide the namespace ID of a valid namespace in `appsettings.json` for the sample to function properly.
+In SDS, a namespace provides isolation within a Tenant. Each namespace has its own collection of Streams, Types, and Stream Views. It is not possible to programmatically create or delete a namespace. If you are a new user, be sure to go to the [Data Hub Portal](https://datahub.connect.aveva.com) and create a namespace using your tenant login credentials provided by AVEVA. You must provide the namespace ID of a valid namespace in `appsettings.json` for the sample to function properly.
 
 Each SdsClient is associated with the tenant passed as an argument to the constructor. There is a one-to-one correspondence between them. However, multiple namespaces may be allocated to a single tenant, so you will see that each function in the library takes in a namespace ID as an argument.
 
@@ -463,6 +466,6 @@ _Note: Types and Stream Views cannot be deleted until any streams referencing th
 
 Automated test uses Python 3.9.1 x64
 
-For the main OCS waveform samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/SDS_WAVEFORM.md)  
-For the main OCS samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
-For the main OSIsoft samples page [ReadMe](https://github.com/osisoft/OSI-Samples)
+For the main ADH waveform samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/SDS_WAVEFORM.md)  
+For the main ADH samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS) 
+For the main AVEVA samples page [ReadMe](https://github.com/osisoft/OSI-Samples)

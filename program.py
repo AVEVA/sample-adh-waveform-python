@@ -7,7 +7,7 @@ import math
 import traceback
 
 from ocs_sample_library_preview import (SdsType, SdsTypeCode, SdsTypeProperty,
-                                        EDSClient, OCSClient, SdsStream, SdsBoundaryType,
+                                        EDSClient, ADHClient, SdsStream, SdsBoundaryType,
                                         SdsStreamPropertyOverride,
                                         SdsStreamViewProperty, SdsStreamView,
                                         SdsStreamIndex, SdsInterpolationMode, Role)
@@ -238,7 +238,7 @@ def main(test=False):
                 appsettings.get('ApiVersion'),
                 appsettings.get('Resource'))
         else:
-            sds_client = OCSClient(
+            sds_client = ADHClient(
                 appsettings.get('ApiVersion'),
                 appsettings.get('TenantId'),
                 appsettings.get('Resource'),
@@ -563,7 +563,7 @@ def main(test=False):
         if tenant_id != 'default':
             # Step 16
             #######################################################################
-            # Tags and Metadata (OCS ONLY)
+            # Tags and Metadata (ADH ONLY)
             #######################################################################
             print()
             print('Let\'s add some Tags and Metadata to our stream:')
@@ -597,7 +597,7 @@ def main(test=False):
 
             # Step 17
             #######################################################################
-            # Update Metadata (OCS ONLY)
+            # Update Metadata (ADH ONLY)
             #######################################################################
             print()
             print('Let\'s update the Metadata on our stream:')
