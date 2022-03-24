@@ -1,5 +1,9 @@
 # Version History
 
+## 1.2.2 / 2022-03-25
+
+- Use language specific Ids
+
 ## 1.2.1 / 2022-03-15
 
 - Updated dependencies
