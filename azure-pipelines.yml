@@ -64,6 +64,7 @@ jobs:
   - job: Tests_EDS
     pool:
       name: 00-OSIManaged-Build
+      demands: PYTHON
     variables:
       - name: TenantId
         value: default
