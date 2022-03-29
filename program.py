@@ -211,15 +211,15 @@ def to_wave_data(json_obj):
 
 
 # Sample Data Information
-SAMPLE_TYPE_ID = 'WaveData_SampleType'
-SAMPLE_TARGET_TYPE_ID = 'WaveDataTarget_SampleType'
-SAMPLE_INTEGER_TYPE_ID = 'WaveData_IntegerType'
-SAMPLE_STREAM_ID = 'WaveData_SampleStream'
-SAMPLE_STREAM_VIEW_ID = 'WaveData_SampleStreamView'
-SAMPLE_STREAM_VIEW_INT_ID = 'WaveData_SampleIntStreamView'
-STREAM_ID_SECONDARY = 'SampleStream_Secondary'
-STREAM_ID_COMPOUND = 'SampleStream_Compound'
-COMPOUND_TYPE_ID = 'SampleType_Compound'
+SAMPLE_TYPE_ID = 'WaveData_SampleType_Python'
+SAMPLE_TARGET_TYPE_ID = 'WaveDataTarget_SampleType_Python'
+SAMPLE_INTEGER_TYPE_ID = 'WaveData_IntegerType_Python'
+SAMPLE_STREAM_ID = 'WaveData_SampleStream_Python'
+SAMPLE_STREAM_VIEW_ID = 'WaveData_SampleStreamView_Python'
+SAMPLE_STREAM_VIEW_INT_ID = 'WaveData_SampleIntStreamView_Python'
+STREAM_ID_SECONDARY = 'SampleStream_Secondary_Python'
+STREAM_ID_COMPOUND = 'SampleStream_Compound_Python'
+COMPOUND_TYPE_ID = 'SampleType_Compound_Python'
 
 
 def main(test=False):

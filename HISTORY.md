@@ -1,5 +1,9 @@
 # Version History
 
+## 1.2.3 / 2022-03-25
+
+- Use language specific Ids
+
 ## 1.2.2 / 2022-03-24
 
 - Changed agent used in pipeline
