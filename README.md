@@ -3,7 +3,7 @@
 | :loudspeaker: **Notice**: Samples have been updated to reflect that they work on AVEVA Data Hub.  The samples also work on OSIsoft Cloud Services unless otherwise noted. |
 | -----------------------------------------------------------------------------------------------|  
 
-**Version:** 1.2.3
+**Version:** 1.2.4
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/ADH/aveva.sample-adh-waveform-python?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2631&branchName=main)
 
@@ -55,17 +55,19 @@ Each call to the SDS REST API consists of an HTTP request along with a specific 
 
 ## Configure the Sample
 
-Included in the sample there is a configuration file with placeholders that need to be replaced with the proper values. They include information for authentication, connecting to the SDS Service, and pointing to a namespace.
+Included in the sample is a configuration file with placeholders that need to be replaced with the proper values. They include information for authentication, connecting to the SDS Service, and pointing to a namespace.
 
 ### Aveva Data Hub
 
-The SDS Service is secured using Azure Active Directory. The sample application is an example of a _confidential client_. Confidential clients provide an application ID and secret that are authenticated against the directory. These are referred to as client IDs and client secrets, which are associated with a given tenant. They are created through the tenant's administration portal. The steps necessary to create a new client ID and secret are described below.
+The SDS Service is secured using Azure Active Directory. The sample application is an example of a _confidential client_. Confidential clients provide an application ID and secret that are authenticated against the directory. These are referred to as client IDs and client secrets, which are associated with a given tenant. The steps necessary to create a new client ID and secret are described below.
 
-First, log on to the [Data Hub Portal](https://datahub.connect.aveva.com) with admin credentials and navigate to the `Client Keys` page under the `Manage` tab, which is situated along the top of the webpage. Two types of keys may be created. For a complete explanation of key roles look at the help bar on the right side of the page. This sample program covers data creation, deletion and retrieval, so an administration key must be used in the configuration file. Creating a new key is simple. Enter a name for the key, select `Administrator role`, then click `Add Key`.
+First, log on to the [Data Hub Portal](https://datahub.connect.aveva.com) as a user with the Tenant Admission role, and navigate to the `Clients` page under the `Security` tab, which is situated along the left side of the webpage. Three types of clients may be created; we will use a `client-credentials` client in this sample, but for the complete explanation all of three types consult the [AVEVA Data Hub clients](https://docs.osisoft.com/bundle/data-hub/page/set-up/clients/clients-concept.html) documentation. 
 
-Next, view the key by clicking the small eye icon on the right of the created key, located in the list of available keys. A pop-up will appear with the tenant ID, client ID and client secret. These must replace the corresponding values in the sample's configuration file.
+To create a new client, click on the `+ Add Client` button along the top, and select the desired roles for this client. This sample program covers data creation, deletion, and retrieval, so a role or roles with Read, Write, and Delete permissions on the streams collection and individual streams will be necessary. It is encouraged to not use the Tenant Administrator role for a client if possible, but that is an existing role with the necessary permissions for this sample. Tenant Contributor is a role that by default has Read and Write permissions to the necessary collections, so if deletions are not desired, it is recommended to skip those steps in the sample rather than elevating the client in order to follow along.
 
-Along with the client ID and secret values, add the tenant name to the authority value so authentication occurs against the correct tenant. The URL for the SDS Service connection must also be changed to reflect the destination address of the requests.
+After naming the client and selecting the role(s), clicking continue lets you generate a secret. Secrets can always be generated or removed later for the client, but the secret itself can only be seen at creation time; naming the secret something meaningful will assist with maintenance of the secrets over time. Provide an expiration date for the secret; if the client is mapped the Tenant Administrator role, it is strongly encouraged to generate a new, fast-expiring secret for each use.
+
+A pop-up will appear with the tenant ID, client ID and client secret. These must replace the corresponding values in the sample's configuration file.
 
 Finally, a valid namespace ID for the tenant must be given. To create a namespace, click on the `Manage` tab then navigate to the `Namespaces` page. At the top the add button will create a new namespace after the required forms are completed. This namespace is now associated with the logged-in tenant and may be used in the sample.
 

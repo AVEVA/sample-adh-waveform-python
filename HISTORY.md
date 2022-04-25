@@ -1,5 +1,9 @@
 # Version History
 
+## 1.2.4 / 2022-04-20
+
+- Update ADH clients section to match new portal layout
+
 ## 1.2.3 / 2022-03-25
 
 - Use language specific Ids
