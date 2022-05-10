@@ -1,5 +1,9 @@
 # Version History
 
+## 1.2.5 / 2022-05-10
+
+- Updated dependencies
+
 ## 1.2.4 / 2022-04-20
 
 - Update ADH clients section to match new portal layout
