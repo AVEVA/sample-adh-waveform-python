@@ -1,1 +1,1 @@
-ocs_sample_library_preview>=0.7.0rc0
+adh-sample-library-preview>=0.7.2rc0
