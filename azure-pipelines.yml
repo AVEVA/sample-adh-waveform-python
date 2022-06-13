@@ -72,9 +72,9 @@ jobs:
   - job: Tests_EDS
     pool:
       name: 00-OSIManaged-Build
-      demands: |
-        ${{ parameters.containerDemandsEDS1 }}
-        ${{ parameters.containerDemandsEDS2 }}
+      demands:
+        - ${{ parameters.containerDemandsEDS1 }}
+        - ${{ parameters.containerDemandsEDS2 }}
     variables:
       - name: TenantId
         value: default
