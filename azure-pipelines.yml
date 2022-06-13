@@ -35,9 +35,11 @@ variables:
 
 parameters:
   - name: containerDemandsADH
-    default: Agent.OS -equals Linux
+    type: object
+    default: 'Agent.OS -equals Linux'
   - name: containerDemandsEDS
-    default: PYTHON
+    type: object
+    default: 'PYTHON'
 
 jobs:
   - job: Tests_ADH
