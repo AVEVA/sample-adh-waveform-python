@@ -34,18 +34,22 @@ variables:
     value: SDS_Python
 
 parameters:
-  - name: containerDemandsADH
+  - name: containerDemandsADH1
+    default: Agent.OS -equals Linux
+  - name: containerDemandsADH2
     default: Agent.OS -equals Linux
   - name: containerDemandsEDS1
     default: PYTHON
   - name: containerDemandsEDS2
-    default: SKU -equals VSEnterprise2022
+    default: PYTHON
 
 jobs:
   - job: Tests_ADH
     pool:
       name: 00-OSIManaged-Containers
-      demands: ${{ parameters.containerDemandsADH }}
+      demands: 
+        - ${{ parameters.containerDemandsADH1 }}
+        - ${{ parameters.containerDemandsADH2 }}
     steps:
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
