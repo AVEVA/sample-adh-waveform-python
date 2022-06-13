@@ -34,22 +34,16 @@ variables:
     value: SDS_Python
 
 parameters:
-  - name: containerDemandsADH1
+  - name: containerDemandsADH
     default: Agent.OS -equals Linux
-  - name: containerDemandsADH2
-    default: Agent.OS -equals Linux
-  - name: containerDemandsEDS1
-    default: PYTHON
-  - name: containerDemandsEDS2
+  - name: containerDemandsEDS
     default: PYTHON
 
 jobs:
   - job: Tests_ADH
     pool:
       name: 00-OSIManaged-Containers
-      demands: 
-        - ${{ parameters.containerDemandsADH1 }}
-        - ${{ parameters.containerDemandsADH2 }}
+      demands: ${{ parameters.containerDemandsADH }}
     steps:
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
@@ -76,9 +70,7 @@ jobs:
   - job: Tests_EDS
     pool:
       name: 00-OSIManaged-Build
-      demands:
-        - ${{ parameters.containerDemandsEDS1 }}
-        - ${{ parameters.containerDemandsEDS2 }}
+      demands: ${{ parameters.containerDemandsEDS }}
     variables:
       - name: TenantId
         value: default
