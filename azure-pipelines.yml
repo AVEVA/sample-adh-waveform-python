@@ -39,7 +39,7 @@ parameters:
   - name: containerDemandsEDS1
     default: PYTHON
   - name: containerDemandsEDS2
-    default: SKU -equals VSEnterprise2022
+    default: 
 
 jobs:
   - job: Tests_ADH
