@@ -35,11 +35,11 @@ variables:
 
 parameters:
   - name: containerDemandsADH
-    type: object
-    default: 'Agent.OS -equals Linux'
-  - name: containerDemandsEDS
-    type: object
-    default: 'PYTHON'
+    default: Agent.OS -equals Linux
+  - name: containerDemandsEDS1
+    default: PYTHON
+  - name: containerDemandsEDS2
+    default: SKU -equals VSEnterprise2022
 
 jobs:
   - job: Tests_ADH
@@ -72,7 +72,9 @@ jobs:
   - job: Tests_EDS
     pool:
       name: 00-OSIManaged-Build
-      demands: ${{ parameters.containerDemandsEDS }}
+      demands: |
+        ${{ parameters.containerDemandsEDS1 }}
+        ${{ parameters.containerDemandsEDS2 }}
     variables:
       - name: TenantId
         value: default
