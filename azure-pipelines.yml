@@ -39,9 +39,9 @@ parameters:
   - name: poolADH
     default: 00-OSIManaged-Containers
   - name: containerDemandsADH
-    default: [Agent.OS -equals Linux]
+    default: ['Agent.OS -equals Linux']
   - name: containerDemandsEDS
-    default: [PYTHON]
+    default: ['PYTHON']
 
 jobs:
   - job: Tests_ADH
