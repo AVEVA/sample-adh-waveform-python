@@ -36,6 +36,8 @@ variables:
     value: SDS_Python
 
 parameters:
+  - name: poolADH
+    default: 00-OSIManaged-Containers
   - name: containerDemandsADH
     default: Agent.OS -equals Linux
   - name: containerDemandsEDS
@@ -44,7 +46,7 @@ parameters:
 jobs:
   - job: Tests_ADH
     pool:
-      name: 00-OSIManaged-Containers
+      name: ${{ parameters.poolADH }}
       demands: ${{ parameters.containerDemandsADH }}
     steps:
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
