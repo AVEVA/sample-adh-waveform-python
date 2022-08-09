@@ -39,6 +39,7 @@ parameters:
   - name: poolADH
     default: 00-OSIManaged-Containers
   - name: containerDemandsADH
+    type: 'object'
     default: Agent.OS -equals Linux
   - name: containerDemandsEDS
     default: PYTHON
