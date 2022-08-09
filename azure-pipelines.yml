@@ -34,6 +34,8 @@ variables:
     value: SDS_Python
   - name: BLACK_DUCK_PROJECT_NAME
     value: SDS_Python
+  - name: containerDemands
+    value: '- Agent.OS -equals Linux\n- PYTHON'
 
 parameters:
   - name: poolADH
@@ -49,7 +51,7 @@ jobs:
   - job: Tests_ADH
     pool:
       name: ${{ parameters.poolADH }}
-      demands: ${{ parameters.containerDemandsADH }}
+      demands: ${{ variables.containerDemands }}
     steps:
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
