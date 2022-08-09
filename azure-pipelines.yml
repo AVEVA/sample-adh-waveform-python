@@ -35,7 +35,7 @@ variables:
   - name: BLACK_DUCK_PROJECT_NAME
     value: SDS_Python
   - name: containerDemands
-    value: '- Agent.OS -equals Linux\n- PYTHON'
+    value: ['Agent.OS -equals Linux', 'PYTHON']
 
 parameters:
   - name: poolADH
