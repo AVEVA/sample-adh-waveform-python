@@ -667,8 +667,8 @@ def main(test=False):
             print()
             print('Getting stream data from the community stream')
             community_stream = community_streams[0]
-            community_data = sds_client.Streams.getLastValueUrl(
-                community_stream.Self, WaveData)
+            community_data = sds_client.SharedStreams.getLastValue(community_stream.TenantId, community_stream.NamespaceId, 
+                community_stream.CommunityId, community_stream.Id, WaveData)
             print('Retrieved last value:')
             print(community_data.toJson())
 
