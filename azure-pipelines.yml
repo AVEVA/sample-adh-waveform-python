@@ -30,21 +30,26 @@ resources:
 
 variables:
   - template: '/miscellaneous/build_templates/variables.yml@templates'
-  - name: POLARIS_PROJECT_NAME
-    value: SDS_Python
-  - name: BLACK_DUCK_PROJECT_NAME
+  - name: analysisProject
     value: SDS_Python
 
 parameters:
+  - name: poolADH
+    default: 00-OSIManaged-Containers
   - name: containerDemandsADH
-    default: Agent.OS -equals Linux
+    type: object
+    default: ['Agent.OS -equals Linux']
+  - name: poolEDS
+    default: 00-OSIManaged-Build
   - name: containerDemandsEDS
-    default: PYTHON
+    type: object
+    default: ['PYTHON']
 
 jobs:
   - job: Tests_ADH
+    condition: ne(variables['Build.Reason'], 'Schedule')
     pool:
-      name: 00-OSIManaged-Containers
+      name: ${{ parameters.poolADH }}
       demands: ${{ parameters.containerDemandsADH }}
     steps:
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
@@ -70,8 +75,9 @@ jobs:
         condition: always()
 
   - job: Tests_EDS
+    condition: ne(variables['Build.Reason'], 'Schedule')
     pool:
-      name: 00-OSIManaged-Build
+      name: ${{ parameters.poolEDS }}
       demands: ${{ parameters.containerDemandsEDS }}
     variables:
       - name: TenantId
