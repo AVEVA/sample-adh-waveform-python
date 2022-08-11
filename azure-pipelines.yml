@@ -30,9 +30,7 @@ resources:
 
 variables:
   - template: '/miscellaneous/build_templates/variables.yml@templates'
-  - name: POLARIS_PROJECT_NAME
-    value: SDS_Python
-  - name: BLACK_DUCK_PROJECT_NAME
+  - name: analysisProject
     value: SDS_Python
 
 parameters:
