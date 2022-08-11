@@ -38,7 +38,7 @@ parameters:
     default: 00-OSIManaged-Containers
   - name: containerDemandsADH
     type: object
-    default: ['Agent.OS -equals Linux]
+    default: ['Agent.OS -equals Linux']
   - name: poolEDS
     default: 00-OSIManaged-Build
   - name: containerDemandsEDS
