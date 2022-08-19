@@ -1,5 +1,9 @@
 # Version History
 
+## 1.2.11 / 2022-08-19
+
+- Use ShareStreams client for retrieving community data
+
 ## 1.2.10 / 2022-08-17
 
 - Automate dependabot approval and automerge
