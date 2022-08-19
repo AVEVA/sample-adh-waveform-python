@@ -1,8 +1,18 @@
 # Version History
 
-## 1.2.9 / 2022-08-12
+## 1.2.11 / 2022-08-19
 
 - Use ShareStreams client for retrieving community data
+
+## 1.2.10 / 2022-08-17
+
+- Automate dependabot approval and automerge
+
+## 1.2.9 / 2022-08-09
+
+- Add dependabot.yml to automate dependency checks
+- Remove weekly tests
+- Parameterize pool and demands
 
 ## 1.2.8 / 2022-07-26
 
