@@ -1,6 +1,6 @@
 # Sequential Data Store Python Sample
 
-**Version:** 1.2.11
+**Version:** 1.2.12
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/ADH/aveva.sample-adh-waveform-python?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2631&branchName=main)
 
