@@ -1,5 +1,9 @@
 # Version History
 
+## 1.2.12 / 2023-10-13
+
+- Migrate Pipelines
+
 ## 1.2.11 / 2022-08-19
 
 - Use ShareStreams client for retrieving community data
