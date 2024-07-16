@@ -52,7 +52,7 @@
 
 ## 1.2.0 / 2022-02-09
 
-- Updated for AVEVA Data Hub
+- Updated for CONNECT data services
 
 ## 1.1.7 / 2022-02-09
 
